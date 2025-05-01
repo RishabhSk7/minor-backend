@@ -3,119 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cipher Dashboard</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    <title>Forencify</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Styles/home.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div class="logo">
-            <img src="{{ url_for('static', filename='7.png') }}" alt="Cipher Logo">
-            <h1><b>CIPHER</b></h1>
-        </div>
-    </nav>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-search-location"></i>
+                <h1>Forencify</h1>
+            </div>
+        </header>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <ul>
-            <li><a href="{{ url_for('index') }}">Home Page</a></li>
-            <li><a href="{{ url_for('analyzer') }}">Crime Analyzer</a></li>
-            <li><a href="#">Downloaded Content</a></li>
-            <li><a href="#">About Us</a></li>
-        </ul>
+        <main>
+            <div class="welcome-section">
+                <h2>Digital Forensic Analysis Platform</h2>
+                <p>Select a platform to begin your forensic investigation</p>
+            </div>
+
+            <div class="options-grid">
+                <a href="#" class="option-card">
+                    <div class="icon instagram">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <h3>Instagram</h3>
+                    <p>Analyze Instagram profiles, posts, and metadata</p>
+                </a>
+
+                <!-- In your options-grid div, update the Reddit card to: -->
+                <a href="{{ url_for('reddit') }}" class="option-card">
+                    <div class="icon reddit">
+                        <i class="fab fa-reddit"></i>
+                    </div>
+                    <h3>Reddit</h3>
+                    <p>Examine Reddit threads, users, and comment history</p>
+                </a>
+
+                <a href="{{ url_for('analyzer') }}" class="option-card">
+                    <div class="icon analyzer">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Analyzer</h3>
+                    <p>Comprehensive data analysis tools</p>
+                </a>
+
+                <a href="#" class="option-card">
+                    <div class="icon x">
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                    <h3>X (Twitter)</h3>
+                    <p>Investigate Twitter accounts and tweet patterns</p>
+                </a>
+            </div>
+        </main>
+        <footer>
+            <p>© Forencify | Digital Forensic Toolkit</p>
+        </footer>
     </div>
-    <div class="overlay" id="overlay"></div>
-
-    <!-- App Logos -->
-    <div class="app-logos-container">
-        <div class="app-logos" id="appLogos">
-            <img src="https://logo.clearbit.com/reddit.com" alt="Reddit" class="app-logo active" data-index="0">
-            <img src="https://logo.clearbit.com/instagram.com" alt="Instagram" class="app-logo" data-index="1">
-            <img src="https://logo.clearbit.com/whatsapp.com" alt="WhatsApp" class="app-logo" data-index="2">
-            <img src="https://logo.clearbit.com/twitter.com" alt="Twitter" class="app-logo" data-index="3">
-            <img src="https://logo.clearbit.com/facebook.com" alt="Facebook" class="app-logo" data-index="4">
-            <img src="https://logo.clearbit.com/telegram.org" alt="Telegram" class="app-logo" data-index="5">
-        </div>
-    </div>
-
-    <!-- App Cards -->
-    <div class="app-cards-container">
-        <div class="app-cards" id="appCards">
-            <div class="app-card" data-app="reddit">
-                <div class="app-card-img-container">
-                    <img src="{{ url_for('static', filename='1.png') }}" alt="Reddit">
-                </div>
-                <div class="app-name">Reddit</div>
-            </div>
-            <div class="app-card" data-app="instagram">
-                <div class="app-card-img-container">
-                    <img src="{{ url_for('static', filename='2.png') }}" alt="Instagram">
-                </div>
-                <div class="app-name">Instagram</div>
-            </div>
-            <div class="app-card" data-app="whatsapp">
-                <div class="app-card-img-container">
-                    <img src="{{ url_for('static', filename='3.webp') }}" alt="WhatsApp">
-                </div>
-                <div class="app-name">WhatsApp</div>
-            </div>
-            <div class="app-card" data-app="twitter">
-                <div class="app-card-img-container">
-                    <img src="{{ url_for('static', filename='4.webp') }}" alt="Twitter">
-                </div>
-                <div class="app-name">Twitter</div>
-            </div>
-            <div class="app-card" data-app="facebook">
-                <div class="app-card-img-container">
-                    <img src="{{ url_for('static', filename='5.jpeg') }}" alt="Facebook">
-                </div>
-                <div class="app-name">Facebook</div>
-            </div>
-            <div class="app-card" data-app="telegram">
-                <div class="app-card-img-container">
-                    <img src="{{ url_for('static', filename='6.jpeg') }}" alt="Telegram">
-                </div>
-                <div class="app-name">Telegram</div>
-            </div>
-        </div>
-        <div class="nav-arrow left" id="prevBtn">&#10094;</div>
-        <div class="nav-arrow right" id="nextBtn">&#10095;</div>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-links">
-            <a href="#">Terms of Use</a>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Contact Us</a>
-            <a href="#">Help Center</a>
-        </div>
-        <div class="copyright">
-            &copy; 2025 Cipher. All rights reserved.
-        </div>
-    </footer>
-
-    <!-- Login Modal -->
-    <div class="modal" id="loginModal">
-        <div class="modal-content">
-            <span class="close-modal" id="closeModal">&times;</span>
-            <div id="loginFormContent">
-                <!-- Dynamic content will be inserted here -->
-            </div>
-        </div>
-    </div>
-
-    <!-- Launch Notification -->
-    <div class="launch-notification" id="launchNotification">
-        <img src="https://logo.clearbit.com/reddit.com" alt="App Icon" id="notificationIcon">
-        <span id="notificationText">Launching Reddit...</span>
-    </div>
-
-    <script src="{{ url_for('static', filename='home.js') }}"></script>
 </body>
 </html>
