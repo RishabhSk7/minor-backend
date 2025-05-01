@@ -111,7 +111,7 @@ def image_upload():
         try:
             files = {"file": (filename, image_file, "multipart/form-data")}
             response = requests.post(
-                "http://localhost:8003/predict-image",
+                "http://image_service:8003/predict-image",
                 headers={"accept": "application/json"},
                 files=files,
             )
@@ -154,7 +154,7 @@ def text_upload():
         results = []
         try:
             classify_resp = requests.post(
-                "http://localhost:8001/classify-messages",
+                "http://zero_shot_service:8001/classify-messages",
                 json={"text": data.split("\n")},
             )
             classify_resp.raise_for_status()
@@ -164,7 +164,7 @@ def text_upload():
 
         try:
             summarize_resp = requests.post(
-                "http://localhost:8002/summarize", json={"text": data}
+                "http://summarizer_service:8002/summarize", json={"text": data}
             )
             summarize_resp.raise_for_status()
             results.append(summarize_resp.json())

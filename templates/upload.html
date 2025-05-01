@@ -732,7 +732,7 @@
                 const formData = new FormData();
                 files.forEach(file => formData.append('files', file));
 
-                return fetch('http://127.0.0.1:5000/text_upload', {
+                return fetch('http://127.0.0.1:8000/text_upload', {
                     method: 'POST',
                     body: formData,
                 })
@@ -754,7 +754,7 @@
                 const formData = new FormData();
                 files.forEach(file => formData.append('files', file));
 
-                return fetch('http://127.0.0.1:5000/image_upload', { // Correct endpoint
+                return fetch('http://127.0.0.1:8000/image_upload', { // Correct endpoint
                     method: 'POST',
                     body: formData,
                     // 'content-type': 'multipart/form-data' is set automatically by browser for FormData
